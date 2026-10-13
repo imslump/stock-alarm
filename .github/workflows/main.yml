@@ -19,9 +19,9 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: 필요한 도구 설치 (yfinance, requests)
+    - name: 필요한 도구 설치 (yfinance, requests, bs4, gemini 등)
       run: |
-        pip install yfinance requests pytz
+        pip install yfinance requests pytz beautifulsoup4 google-generativeai
 
     - name: 파이썬 코드 실행하여 텔레그램 보내기
       env:
