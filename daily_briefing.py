@@ -89,7 +89,7 @@ def get_gemini_analysis(market_data, news_data):
     """
     
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('gemini-pro')
         response = model.generate_content(prompt)
         return f"\n🤖 [Gemini AI 시황 분석 및 전략]\n{response.text}\n"
     except Exception as e:
