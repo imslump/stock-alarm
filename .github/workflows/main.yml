@@ -1,0 +1,28 @@
+name: Daily Stock Briefing
+
+on:
+  schedule:
+    # 깃허브는 영국 시간(UTC)을 씁니다. 한국 아침 8시는 영국 밤 11시(23시)입니다.
+    - cron: '0 23 * * *'
+  workflow_dispatch: # 언제든 수동으로 테스트해 볼 수 있는 버튼입니다.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 저장소 파일 불러오기
+      uses: actions/checkout@v3
+
+    - name: 파이썬 설치하기
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: 필요한 도구 설치 (yfinance, requests)
+      run: |
+        pip install yfinance requests pytz
+
+    - name: 파이썬 코드 실행하여 텔레그램 보내기
+      run: |
+        python daily_briefing.py
