@@ -24,5 +24,9 @@ jobs:
         pip install yfinance requests pytz
 
     - name: 파이썬 코드 실행하여 텔레그램 보내기
+      env:
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        CHAT_ID: ${{ secrets.CHAT_ID }}
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       run: |
         python daily_briefing.py
